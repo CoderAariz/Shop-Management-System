@@ -91,6 +91,18 @@ try:
                 product=Label(bill_screen,text='Product Name:')
                 product.grid(row=4,column=0)
             bill_screen.mainloop()
+    def search():
+        try:
+            search_screen=Toplevel(top)
+            product=Label(search_screen,text='Product Name')
+            product.grid(row=0,column=0)
+            product_e=Entry(search_screen)
+            prd=(product_e.get(),)
+            searchproduct=("select * from product where name=%s")
+            cur.execute(searchproduct,prd)
+            prdct=cur.fetchall()
+        except:
+            messagebox.showerror('Error','searching failed.')
     top=Tk(screenName='Aariz',baseName='shopping',className=' ',useTk=1)
     top.geometry('400x300')
     top.title('Shop Management System')
